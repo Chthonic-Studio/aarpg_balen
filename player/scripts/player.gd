@@ -1,38 +1,32 @@
-class_name Player 
-extends CharacterBody2D
-
-enum State { idle, walk, jump }
+class_name Player extends CharacterBody2D
 
 var cardinal_direction : Vector2 = Vector2.DOWN
 var direction : Vector2 = Vector2.ZERO
 
 @onready var animation_player = $AnimatedSprite2D
 @onready var sprite = $AnimatedSprite2D
+@onready var state_machine : PlayerStateMachine = $StateMachine
 
 @onready var collision = $CollisionShape2D
-
-@export var state = State.idle
-
-@export var move_speed: float = 100.0 ## Base movement speed of the player
 
 
 
 func _ready() -> void:
+	state_machine.Initialize(self)
 	pass
 	
 	
-
-
 func _process( delta ):
+
+	#direction.x = Input.get_action_strength("right") - Input.get_action_strength("left")
+	#direction.y = Input.get_action_strength("down") - Input.get_action_strength("up")
+	direction = Vector2 (
+		Input.get_axis("left", "right"),
+		Input.get_axis("up", "down")
+	).normalized()
+	direction = direction.normalized()
 	
-	direction.x = Input.get_action_strength("right") - Input.get_action_strength("left")
-	direction.y = Input.get_action_strength("down") - Input.get_action_strength("up")
-	
-	velocity = direction * move_speed
-	
-	if SetState() or SetDirection():
-		UpdateAnimation()
-	
+	pass	
 
 func _physics_process( delta ):
 	move_and_slide()
@@ -55,21 +49,8 @@ func SetDirection() -> bool:
 	sprite.scale.x = -1 if cardinal_direction == Vector2.LEFT else 1
 	return true
 	
-func SetState() -> bool:
-	var new_state : State = State.idle if direction == Vector2.ZERO else State.walk
-	if new_state == state:
-		return false
-		
-	state = new_state
-	return true
-	
-func UpdateAnimation() -> void:
-	var state_name : String = ""
-	match state:
-		State.idle: state_name = "idle"
-		State.walk: state_name = "walk"
-		State.jump: state_name = "jump"
-	animation_player.play( state_name + "_" + AnimDirection())
+func UpdateAnimation( state : String ) -> void:
+	animation_player.play( state + "_" + AnimDirection())
 
 func AnimDirection() -> String:
 	if cardinal_direction == Vector2.DOWN:
