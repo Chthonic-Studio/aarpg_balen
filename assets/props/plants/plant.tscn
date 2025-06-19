@@ -1,0 +1,37 @@
+[gd_scene load_steps=7 format=3 uid="uid://chc31li38dfg7"]
+
+[ext_resource type="Texture2D" uid="uid://c52ns7wsoxaon" path="res://assets/props/plants/giant-plants.png" id="1_fcu1p"]
+[ext_resource type="Script" uid="uid://cobad4yptne3n" path="res://assets/props/plants/plant.gd" id="1_o7vt2"]
+[ext_resource type="PackedScene" uid="uid://dto5k27v34kx7" path="res://general/hitbox/hit_box.tscn" id="2_o7vt2"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sndcq"]
+atlas = ExtResource("1_fcu1p")
+region = Rect2(0, 353, 97, 125)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o7vt2"]
+size = Vector2(18, 26.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_68cyy"]
+size = Vector2(18, 16.5)
+
+[node name="Plant" type="Node2D"]
+script = ExtResource("1_o7vt2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = SubResource("AtlasTexture_sndcq")
+
+[node name="HitBox" parent="." instance=ExtResource("2_o7vt2")]
+collision_layer = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(-2, 3)
+shape = SubResource("RectangleShape2D_o7vt2")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-2, 8)
+shape = SubResource("RectangleShape2D_68cyy")

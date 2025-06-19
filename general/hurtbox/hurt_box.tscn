@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b56a08vyxv1u8"]
+
+[ext_resource type="Script" uid="uid://bk7k55naqiuah" path="res://general/hurtbox/hurt_box.gd" id="1_y3e7p"]
+
+[node name="HurtBox" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_y3e7p")

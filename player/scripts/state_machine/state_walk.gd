@@ -12,7 +12,6 @@ func _ready() -> void:
 ## What happens when the player enters the state
 func Enter() -> void:
 	player.UpdateAnimation("walk")
-	pass
 
 ## What happens when the player exists the state
 func Exit() -> void:
@@ -35,5 +34,8 @@ func Physics( _delta: float ) -> State:
 	return null	
 
 ## What happens during input events in this state
-func HandleInput( _event: InputEvent ) -> State:
+func HandleInput(_event: InputEvent) -> State:
+	# Allow attacking even when walking
+	if _event.is_action_pressed("left_attack"):
+		return attack
 	return null
