@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=4 uid="uid://dkgbp1781m8ka"]
+[gd_scene load_steps=5 format=4 uid="uid://dkgbp1781m8ka"]
 
 [ext_resource type="PackedScene" uid="uid://tsvjns3q3p3l" path="res://scenes/player.tscn" id="1_hddm4"]
 [ext_resource type="PackedScene" uid="uid://c5fkb2i6imjwd" path="res://tilemaps/grass1.tscn" id="2_qchbg"]
 [ext_resource type="PackedScene" uid="uid://chc31li38dfg7" path="res://assets/props/plants/plant.tscn" id="3_kddj0"]
+[ext_resource type="PackedScene" uid="uid://dr7s3qsltu2e0" path="res://enemies/monsters/SkeletonWarrior/SkeletonWarrior.tscn" id="4_q8s1k"]
 
 [node name="Playground" type="Node2D"]
 y_sort_enabled = true
@@ -21,3 +22,6 @@ position = Vector2(424, 202)
 
 [node name="Plant3" parent="." instance=ExtResource("3_kddj0")]
 position = Vector2(66, 201)
+
+[node name="SkeletonWarrior" parent="." instance=ExtResource("4_q8s1k")]
+position = Vector2(483, -35)

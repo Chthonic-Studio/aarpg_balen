@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://cloliop0het6f"
+path="res://.godot/imported/Crowd in Panic.ogg-085b290b9b578e697a752023c0f57458.oggvorbisstr"
+
+[deps]
+
+source_file="res://audio/bgs/Crowd in Panic.ogg"
+dest_files=["res://.godot/imported/Crowd in Panic.ogg-085b290b9b578e697a752023c0f57458.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

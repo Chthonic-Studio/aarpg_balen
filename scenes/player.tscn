@@ -30,7 +30,7 @@ shape = SubResource("CircleShape2D_maef2")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -11)
 sprite_frames = ExtResource("2_ur7pv")
-animation = &"attack_down"
+animation = &"walk_up"
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("8_smehm")
