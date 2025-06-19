@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://tsvjns3q3p3l"]
+[gd_scene load_steps=20 format=3 uid="uid://tsvjns3q3p3l"]
 
 [ext_resource type="Script" uid="uid://ftybwkm8xtik" path="res://player/scripts/player.gd" id="1_g2els"]
 [ext_resource type="SpriteFrames" uid="uid://c2rak7inkxr0y" path="res://resources/sprite_frames/default_player.tres" id="2_ur7pv"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://cmladeyv6lupv" path="res://player/scripts/player_camera.gd" id="8_y4r1p"]
 [ext_resource type="Script" uid="uid://cf4l43eo57wy2" path="res://player/scripts/state_machine/state_idle.gd" id="9_ur7pv"]
 [ext_resource type="Script" uid="uid://dp02acp3nsorg" path="res://player/scripts/state_machine/state_walk.gd" id="10_y4r1p"]
+[ext_resource type="PackedScene" uid="uid://dto5k27v34kx7" path="res://general/hitbox/hit_box.tscn" id="11_3v2ag"]
+[ext_resource type="AudioStream" uid="uid://cbfl6bqno6te0" path="res://player/audio/MaleHit1.wav" id="12_jej6c"]
 [ext_resource type="Script" uid="uid://dnnnsa5t4br7j" path="res://player/scripts/state_machine/state_attack.gd" id="14_f1ej7"]
 [ext_resource type="AudioStream" uid="uid://bpn1xgf7w28dx" path="res://player/audio/SwordSlash1.mp3" id="15_oprun"]
 [ext_resource type="PackedScene" uid="uid://b56a08vyxv1u8" path="res://general/hurtbox/hurt_box.tscn" id="16_a8ls1"]
@@ -16,6 +18,77 @@ radius = 8.06226
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_qfm1y"]
 points = PackedVector2Array(33.7567, -26.02, 28.7567, -8.02, 20.7567, -1.02, 8.75669, 5.98, -1.24331, 6.98, -17.2433, 3.98, -29.2433, -12.02, -29.2433, -32.02, -20.2433, -33.02, 16.7567, -25.02)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f1ej7"]
+radius = 6.0
+height = 28.0
+
+[sub_resource type="Animation" id="Animation_oprun"]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_a8ls1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qfm1y"]
+resource_name = "damaged"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.196078), Color(1, 1, 1, 1), Color(1, 1, 1, 0.392157), Color(1, 1, 1, 1), Color(1, 1, 1, 0.294118), Color(1, 1, 1, 1), Color(1, 1, 1, 0.588235), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Audio/AudioStreamPlayer2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("12_jej6c")
+}],
+"times": PackedFloat32Array(-0.333333)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fulsm"]
+_data = {
+&"RESET": SubResource("Animation_a8ls1"),
+&"damaged": SubResource("Animation_qfm1y"),
+&"default": SubResource("Animation_oprun")
+}
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 16
@@ -30,7 +103,7 @@ shape = SubResource("CircleShape2D_maef2")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -11)
 sprite_frames = ExtResource("2_ur7pv")
-animation = &"walk_up"
+animation = &"hit_up"
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("8_smehm")
@@ -44,6 +117,8 @@ script = ExtResource("10_y4r1p")
 [node name="Attack" type="Node" parent="StateMachine"]
 script = ExtResource("14_f1ej7")
 attack_sound = ExtResource("15_oprun")
+
+[node name="Hit" type="Node" parent="StateMachine"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("8_y4r1p")
@@ -67,3 +142,15 @@ monitoring = false
 position = Vector2(1.47655, -2.79639)
 shape = SubResource("ConvexPolygonShape2D_qfm1y")
 debug_color = Color(0.854904, 0.135532, 0.275824, 0.42)
+
+[node name="HitBox" parent="." instance=ExtResource("11_3v2ag")]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(1, -12)
+shape = SubResource("CapsuleShape2D_f1ej7")
+
+[node name="EffectAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_fulsm")
+}

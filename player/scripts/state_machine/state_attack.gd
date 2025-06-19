@@ -17,6 +17,9 @@ var attacking : bool = false
 
 func _ready() -> void:
 	pass
+
+func init() -> void:
+	pass
 	
 ## What happens when the player enters the state
 func Enter() -> void:

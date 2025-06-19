@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dr7s3qsltu2e0"]
+[gd_scene load_steps=14 format=3 uid="uid://dr7s3qsltu2e0"]
 
 [ext_resource type="Script" uid="uid://wr6723ltosq6" path="res://enemies/enemy.gd" id="1_tn347"]
 [ext_resource type="SpriteFrames" uid="uid://sxyc6kc4xfhd" path="res://resources/sprite_frames/skeleton_warrior.tres" id="1_uc1gw"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bxl5s3mv1cuol" path="res://enemies/states/enemy_state_hit.gd" id="6_ccaxk"]
 [ext_resource type="PackedScene" uid="uid://b56a08vyxv1u8" path="res://general/hurtbox/hurt_box.tscn" id="6_lqvor"]
 [ext_resource type="Script" uid="uid://yjs86ae3xemh" path="res://enemies/states/enemy_state_wander.gd" id="6_piyya"]
+[ext_resource type="AudioStream" uid="uid://omxcjsme5y6p" path="res://audio/se/melee/SkeletonHit.mp3" id="7_3delb"]
 [ext_resource type="Script" uid="uid://d02e1m4igk0r7" path="res://enemies/states/enemy_state_destroy.gd" id="7_45h8u"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xc01r"]
@@ -48,6 +49,7 @@ next_state = NodePath("../Idle")
 
 [node name="Hit" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("next_state")]
 script = ExtResource("6_ccaxk")
+hit_sound = ExtResource("7_3delb")
 next_state = NodePath("../Idle")
 
 [node name="Destroy" type="Node" parent="EnemyStateMachine"]

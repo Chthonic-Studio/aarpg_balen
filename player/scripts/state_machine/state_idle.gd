@@ -6,6 +6,9 @@ class_name State_Idle extends State
 
 func _ready() -> void:
 	pass
+
+func init() -> void:
+	pass
 	
 ## What happens when the player enters the state
 func Enter() -> void:
