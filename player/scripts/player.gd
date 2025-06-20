@@ -68,11 +68,15 @@ func AnimDirection() -> String:
 		return "right"
 
 func _take_damage( hurt_box : HurtBox ) -> void:
+	print("_take_damage function on player triggered")
 	if invulnerable == true:
 		return
+		
 	update_hp( -hurt_box.damage )
+	print("_take_damage generates " + str(hurt_box.damage) + " damage" )
 	if hp > 0:
 		player_damaged.emit( hurt_box )
+		print("Emitting player_damaged as HP is above 0")
 	else:
 		player_damaged.emit( hurt_box )
 		update_hp( 99 )
@@ -80,6 +84,8 @@ func _take_damage( hurt_box : HurtBox ) -> void:
 	
 func update_hp( delta : int ) -> void:
 	hp = clampi( hp + delta, 0, max_hp )
+	print ("Player HP = " + str(hp))
+	PlayerHud.update_hp( hp, max_hp)
 	pass
 	
 func make_invulnerable( _duration : float = 1.0 ) -> void:

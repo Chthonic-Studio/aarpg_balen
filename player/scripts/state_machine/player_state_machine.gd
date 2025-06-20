@@ -12,7 +12,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
-	ChangeState( current_state.Process( delta ) )
+	ChangeState( current_state.Physics( delta ) )
 	pass
 
 func _unhandled_input(event: InputEvent) -> void:

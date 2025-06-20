@@ -1,7 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://tsvjns3q3p3l"]
+[gd_scene load_steps=21 format=3 uid="uid://tsvjns3q3p3l"]
 
 [ext_resource type="Script" uid="uid://ftybwkm8xtik" path="res://player/scripts/player.gd" id="1_g2els"]
 [ext_resource type="SpriteFrames" uid="uid://c2rak7inkxr0y" path="res://resources/sprite_frames/default_player.tres" id="2_ur7pv"]
+[ext_resource type="Script" uid="uid://c03ot8eb8wf3b" path="res://player/scripts/state_machine/state_hit.gd" id="8_jej6c"]
 [ext_resource type="Script" uid="uid://becoex2aqdqn3" path="res://player/scripts/state_machine/player_state_machine.gd" id="8_smehm"]
 [ext_resource type="Script" uid="uid://cmladeyv6lupv" path="res://player/scripts/player_camera.gd" id="8_y4r1p"]
 [ext_resource type="Script" uid="uid://cf4l43eo57wy2" path="res://player/scripts/state_machine/state_idle.gd" id="9_ur7pv"]
@@ -62,7 +63,7 @@ tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+"times": PackedFloat32Array(0.0333333, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.196078), Color(1, 1, 1, 1), Color(1, 1, 1, 0.392157), Color(1, 1, 1, 1), Color(1, 1, 1, 0.294118), Color(1, 1, 1, 1), Color(1, 1, 1, 0.588235), Color(1, 1, 1, 1)]
@@ -76,10 +77,10 @@ tracks/1/loop_wrap = true
 tracks/1/keys = {
 "clips": [{
 "end_offset": 0.0,
-"start_offset": 0.0,
+"start_offset": 0.236519,
 "stream": ExtResource("12_jej6c")
 }],
-"times": PackedFloat32Array(-0.333333)
+"times": PackedFloat32Array(0.00318521)
 }
 tracks/1/use_blend = true
 
@@ -103,7 +104,7 @@ shape = SubResource("CircleShape2D_maef2")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -11)
 sprite_frames = ExtResource("2_ur7pv")
-animation = &"hit_up"
+animation = &"hit_down"
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("8_smehm")
@@ -119,6 +120,7 @@ script = ExtResource("14_f1ej7")
 attack_sound = ExtResource("15_oprun")
 
 [node name="Hit" type="Node" parent="StateMachine"]
+script = ExtResource("8_jej6c")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("8_y4r1p")

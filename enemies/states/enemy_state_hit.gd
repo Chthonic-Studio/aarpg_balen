@@ -29,7 +29,9 @@ func enter() -> void:
 	
 	_direction = enemy.global_position.direction_to( _damage_position )
 	
-	enemy.SetDirection( _direction )
+	var knockback_direction : Vector2 = -_direction
+
+	enemy.SetDirection( knockback_direction )
 	enemy.velocity = _direction * -knockback_speed
 	
 	enemy.UpdateAnimation( anim_name )
