@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bgdfulwng2nuv" path="res://GUI/player_hud/heart_gui.tscn" id="3_hgn0r"]
 
 [node name="PlayerHud" type="CanvasLayer"]
+layer = 2
 script = ExtResource("1_qoodi")
 
 [node name="Control" type="Control" parent="."]
@@ -15,6 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="HealthLabel" type="Label" parent="Control"]
