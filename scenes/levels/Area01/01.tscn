@@ -25,8 +25,8 @@ level = "uid://dkgbp1781m8ka"
 side = 1
 
 [node name="LevelTransition2" parent="." instance=ExtResource("5_ffe4p")]
-position = Vector2(206, 541)
+position = Vector2(208, 570)
 level = "uid://dkgbp1781m8ka"
 target_transition_area = "LevelTransition2"
 size = 4
-side = 3
+side = 2

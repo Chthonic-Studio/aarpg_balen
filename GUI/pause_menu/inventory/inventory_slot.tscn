@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://yhby1gle5ro4"]
+
+[ext_resource type="Texture2D" uid="uid://ua10s4tnixp0" path="res://GUI/pause_menu/inventory/sprites/Inventory_Slot.png" id="1_d72hl"]
+[ext_resource type="Texture2D" uid="uid://b8qx48dmfvpv4" path="res://items/sprites/32x32.png" id="1_eqhwg"]
+[ext_resource type="Script" uid="uid://cly3ky13une7h" path="res://GUI/pause_menu/inventory/scripts/inventory_slot_ui.gd" id="1_fvlqd"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d72hl"]
+atlas = ExtResource("1_eqhwg")
+region = Rect2(0, 545, 32, 32)
+
+[node name="InventorySlot" type="Button"]
+custom_minimum_size = Vector2(32, 32)
+anchors_preset = -1
+anchor_right = 0.0770833
+anchor_bottom = 0.118519
+offset_right = -5.0
+script = ExtResource("1_fvlqd")
+metadata/_edit_use_anchors_ = true
+
+[node name="SlotBG" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_d72hl")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 32.0
+offset_bottom = 32.0
+texture = SubResource("AtlasTexture_d72hl")
+stretch_mode = 3
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.03125
+anchor_right = 1.0
+anchor_bottom = 0.5625
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 9
+text = "99"
+horizontal_alignment = 2

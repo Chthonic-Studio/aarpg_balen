@@ -1,0 +1,196 @@
+[gd_scene load_steps=10 format=3 uid="uid://b8wu450tpic01"]
+
+[ext_resource type="Script" uid="uid://doy6daidig1fp" path="res://GUI/pause_menu/pause_menu.gd" id="1_4w82k"]
+[ext_resource type="Texture2D" uid="uid://dh7gxcy6xepkh" path="res://GUI/pause_menu/inventory/sprites/ItemHolder.png" id="2_8rjl7"]
+[ext_resource type="FontFile" uid="uid://bsgqi2ji6x2kw" path="res://GUI/fonts/Beholden/Beholden-Bold.ttf" id="2_yiq8o"]
+[ext_resource type="Texture2D" uid="uid://sxahgelhcbo" path="res://GUI/pause_menu/inventory/sprites/Inventory_background.png" id="3_rsqrg"]
+[ext_resource type="PackedScene" uid="uid://yhby1gle5ro4" path="res://GUI/pause_menu/inventory/inventory_slot.tscn" id="4_36pfd"]
+[ext_resource type="Script" uid="uid://c63vjql47klku" path="res://GUI/pause_menu/inventory/scripts/inventory_ui.gd" id="4_sn1ji"]
+[ext_resource type="Resource" uid="uid://ds7sx21w5lny1" path="res://GUI/pause_menu/inventory/player_inventory.tres" id="5_8rjl7"]
+[ext_resource type="FontFile" uid="uid://od7268wi24i7" path="res://GUI/fonts/Beholden/Beholden-Regular.ttf" id="8_dvxeg"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_36pfd"]
+content_margin_left = 10.0
+content_margin_top = 10.0
+content_margin_right = 10.0
+content_margin_bottom = 10.0
+texture = ExtResource("3_rsqrg")
+texture_margin_left = 14.0
+texture_margin_top = 14.0
+texture_margin_right = 14.0
+texture_margin_bottom = 14.0
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_4w82k")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.5, 0.44, 0.44, 0.698039)
+
+[node name="DescriptionBG" type="NinePatchRect" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -1.89531
+anchor_top = -0.312636
+anchor_right = -1.18906
+anchor_bottom = -0.145969
+offset_left = 1067.75
+offset_top = 253.412
+offset_right = 1028.75
+offset_bottom = 253.412
+texture = ExtResource("2_8rjl7")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.00208333
+anchor_top = 0.766667
+anchor_right = 0.2
+anchor_bottom = 0.996296
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button_Save" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yiq8o")
+theme_override_font_sizes/font_size = 20
+text = "Save"
+
+[node name="Button_Load" type="Button" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_yiq8o")
+theme_override_font_sizes/font_size = 20
+text = "Load"
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.410417
+anchor_right = 0.591667
+anchor_bottom = 0.107407
+grow_horizontal = 2
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+text = "Game Paused"
+vertical_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="Control"]
+layout_mode = 0
+offset_left = 144.0
+offset_top = 34.0
+offset_right = 464.0
+offset_bottom = 168.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_36pfd")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/PanelContainer"]
+custom_minimum_size = Vector2(300, 120)
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="Control/PanelContainer/ScrollContainer"]
+layout_mode = 2
+columns = 8
+script = ExtResource("4_sn1ji")
+data = ExtResource("5_8rjl7")
+
+[node name="InventorySlot" parent="Control/PanelContainer/ScrollContainer/GridContainer" instance=ExtResource("4_36pfd")]
+layout_mode = 2
+
+[node name="InventorySlot2" parent="Control/PanelContainer/ScrollContainer/GridContainer" instance=ExtResource("4_36pfd")]
+layout_mode = 2
+
+[node name="InventorySlot3" parent="Control/PanelContainer/ScrollContainer/GridContainer" instance=ExtResource("4_36pfd")]
+layout_mode = 2
+
+[node name="InventorySlot4" parent="Control/PanelContainer/ScrollContainer/GridContainer" instance=ExtResource("4_36pfd")]
+layout_mode = 2
+
+[node name="InventorySlot5" parent="Control/PanelContainer/ScrollContainer/GridContainer" instance=ExtResource("4_36pfd")]
+layout_mode = 2
+
+[node name="InventorySlot6" parent="Control/PanelContainer/ScrollContainer/GridContainer" instance=ExtResource("4_36pfd")]
+layout_mode = 2
+
+[node name="InventorySlot7" parent="Control/PanelContainer/ScrollContainer/GridContainer" instance=ExtResource("4_36pfd")]
+layout_mode = 2
+
+[node name="InventorySlot8" parent="Control/PanelContainer/ScrollContainer/GridContainer" instance=ExtResource("4_36pfd")]
+layout_mode = 2
+
+[node name="InventorySlot9" parent="Control/PanelContainer/ScrollContainer/GridContainer" instance=ExtResource("4_36pfd")]
+layout_mode = 2
+
+[node name="InventorySlot10" parent="Control/PanelContainer/ScrollContainer/GridContainer" instance=ExtResource("4_36pfd")]
+layout_mode = 2
+
+[node name="InventorySlot11" parent="Control/PanelContainer/ScrollContainer/GridContainer" instance=ExtResource("4_36pfd")]
+layout_mode = 2
+
+[node name="InventorySlot12" parent="Control/PanelContainer/ScrollContainer/GridContainer" instance=ExtResource("4_36pfd")]
+layout_mode = 2
+
+[node name="InventorySlot13" parent="Control/PanelContainer/ScrollContainer/GridContainer" instance=ExtResource("4_36pfd")]
+layout_mode = 2
+
+[node name="InventorySlot14" parent="Control/PanelContainer/ScrollContainer/GridContainer" instance=ExtResource("4_36pfd")]
+layout_mode = 2
+
+[node name="InventorySlot15" parent="Control/PanelContainer/ScrollContainer/GridContainer" instance=ExtResource("4_36pfd")]
+layout_mode = 2
+
+[node name="InventorySlot16" parent="Control/PanelContainer/ScrollContainer/GridContainer" instance=ExtResource("4_36pfd")]
+layout_mode = 2
+
+[node name="InventorySlot17" parent="Control/PanelContainer/ScrollContainer/GridContainer" instance=ExtResource("4_36pfd")]
+layout_mode = 2
+
+[node name="InventorySlot18" parent="Control/PanelContainer/ScrollContainer/GridContainer" instance=ExtResource("4_36pfd")]
+layout_mode = 2
+
+[node name="InventorySlot19" parent="Control/PanelContainer/ScrollContainer/GridContainer" instance=ExtResource("4_36pfd")]
+layout_mode = 2
+
+[node name="InventorySlot20" parent="Control/PanelContainer/ScrollContainer/GridContainer" instance=ExtResource("4_36pfd")]
+layout_mode = 2
+
+[node name="InventorySlot21" parent="Control/PanelContainer/ScrollContainer/GridContainer" instance=ExtResource("4_36pfd")]
+layout_mode = 2
+
+[node name="InventorySlot22" parent="Control/PanelContainer/ScrollContainer/GridContainer" instance=ExtResource("4_36pfd")]
+layout_mode = 2
+
+[node name="InventorySlot23" parent="Control/PanelContainer/ScrollContainer/GridContainer" instance=ExtResource("4_36pfd")]
+layout_mode = 2
+
+[node name="InventorySlot24" parent="Control/PanelContainer/ScrollContainer/GridContainer" instance=ExtResource("4_36pfd")]
+layout_mode = 2
+
+[node name="ItemDescription" type="Label" parent="Control"]
+layout_mode = 0
+anchor_left = 0.36875
+anchor_top = 0.677778
+anchor_right = 0.925
+anchor_bottom = 0.744444
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = -5
+theme_override_constants/paragraph_spacing = -5
+theme_override_fonts/font = ExtResource("8_dvxeg")
+theme_override_font_sizes/font_size = 10
+text = "A shiny rock asda A shiny rock asdaA shiny rock asdaA shiny rock asdaA shiny rock asdaA shiny rock asdaA shiny rock asda"
+horizontal_alignment = 1
+autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
