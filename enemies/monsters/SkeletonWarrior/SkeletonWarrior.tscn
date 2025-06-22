@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dr7s3qsltu2e0"]
+[gd_scene load_steps=19 format=3 uid="uid://dr7s3qsltu2e0"]
 
 [ext_resource type="Script" uid="uid://wr6723ltosq6" path="res://enemies/enemy.gd" id="1_tn347"]
 [ext_resource type="SpriteFrames" uid="uid://sxyc6kc4xfhd" path="res://resources/sprite_frames/skeleton_warrior.tres" id="1_uc1gw"]
@@ -10,9 +10,28 @@
 [ext_resource type="Script" uid="uid://yjs86ae3xemh" path="res://enemies/states/enemy_state_wander.gd" id="6_piyya"]
 [ext_resource type="AudioStream" uid="uid://omxcjsme5y6p" path="res://audio/se/melee/SkeletonHit.mp3" id="7_3delb"]
 [ext_resource type="Script" uid="uid://d02e1m4igk0r7" path="res://enemies/states/enemy_state_destroy.gd" id="7_45h8u"]
+[ext_resource type="Script" uid="uid://cxlqjrqjaaq4p" path="res://enemies/scripts/drop_data.gd" id="9_vj20k"]
+[ext_resource type="Resource" uid="uid://c0msglcgrmig8" path="res://items/gem.tres" id="10_24vpl"]
+[ext_resource type="Resource" uid="uid://fptdsg64nxia" path="res://items/stone.tres" id="11_pcr6s"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xc01r"]
 height = 34.0
+
+[sub_resource type="Resource" id="Resource_7fsr6"]
+script = ExtResource("9_vj20k")
+item = ExtResource("10_24vpl")
+probability = 70.0
+min_amount = 1
+max_amount = 4
+metadata/_custom_type_script = "uid://cxlqjrqjaaq4p"
+
+[sub_resource type="Resource" id="Resource_tela2"]
+script = ExtResource("9_vj20k")
+item = ExtResource("11_pcr6s")
+probability = 100.0
+min_amount = 1
+max_amount = 2
+metadata/_custom_type_script = "uid://cxlqjrqjaaq4p"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lqvor"]
 radius = 17.0
@@ -54,6 +73,7 @@ next_state = NodePath("../Idle")
 
 [node name="Destroy" type="Node" parent="EnemyStateMachine"]
 script = ExtResource("7_45h8u")
+drops = Array[ExtResource("9_vj20k")]([SubResource("Resource_7fsr6"), SubResource("Resource_tela2")])
 
 [node name="HurtBox" parent="." instance=ExtResource("6_lqvor")]
 

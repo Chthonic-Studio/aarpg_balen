@@ -33,7 +33,8 @@ func Enter() -> void:
 	attacking = true
 	
 	await get_tree().create_timer( attack_damage_delay ).timeout
-	hurt_box.monitoring = true
+	if attacking:
+		hurt_box.monitoring = true
 	pass
 
 ## What happens when the player exists the state

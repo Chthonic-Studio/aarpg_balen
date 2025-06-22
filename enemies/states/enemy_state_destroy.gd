@@ -1,10 +1,15 @@
 class_name EnemyStateDestroy extends EnemyState
 
+const PICKUP = preload("res://items/item_pickup/item_pickup.tscn")
+
 @export var anim_name : String = "destroy"
 @export var knockback_speed : float = 200.0
 @export var decelerate_speed : float = 10.0
 
 @export_category("AI")
+
+@export_category("Item Drops")
+@export var drops : Array [ DropData ]
 
 var _direction : Vector2
 var _damage_position : Vector2
@@ -26,6 +31,8 @@ func enter() -> void:
 	
 	enemy.UpdateAnimation( anim_name )
 	enemy.sprite.animation_finished.connect( _on_animation_finished )
+	
+	disable_hurt_box()
 
 ## What happens when the player exists the state
 func exit() -> void:
@@ -46,3 +53,23 @@ func _on_enemy_destroyed( hurt_box : HurtBox ) -> void:
 
 func _on_animation_finished( ) -> void:
 	enemy.queue_free()
+
+func disable_hurt_box() -> void:
+	var hurt_box : HurtBox = enemy.get_node_or_null("HurtBox")
+	if hurt_box :
+		hurt_box.monitoring = false
+		
+func drop_items() -> void:
+	if drops.size() == 0:
+		return
+	
+	for i in drops.size():
+		if drops[ i ] == null or drops[ i ].item == null:
+			continue
+		var drop_count : int = drops[ i ].get_drop_count()
+		for j in drop_count:
+			var drop : ItemPickup = PICKUP.instantiate() as ItemPickup
+			drop.item_data = drops[ i ].item
+			enemy.get_parent().call_deferred( "add_child", drop )
+			drop.global_position = enemy.global_position
+			drop.velocity = enemy.velocity.rotated( randf_range( -1.5, 1.5 ) ) * randf_range( 0.9, 1.5 )

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://dkgbp1781m8ka"]
+[gd_scene load_steps=13 format=4 uid="uid://dkgbp1781m8ka"]
 
 [ext_resource type="Script" uid="uid://c6aki8r82aeq" path="res://scenes/levels/scripts/level.gd" id="1_mm0a5"]
 [ext_resource type="PackedScene" uid="uid://c5fkb2i6imjwd" path="res://tilemaps/grass1.tscn" id="2_qchbg"]
@@ -7,6 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://dr7s3qsltu2e0" path="res://enemies/monsters/SkeletonWarrior/SkeletonWarrior.tscn" id="4_q8s1k"]
 [ext_resource type="PackedScene" uid="uid://b5axvgwukxg7d" path="res://scenes/levels/player_spawn.tscn" id="5_o6wi6"]
 [ext_resource type="PackedScene" uid="uid://dwdlmcsvmqodw" path="res://scenes/levels/level_transition.tscn" id="7_emj6c"]
+[ext_resource type="PackedScene" uid="uid://xss3xwutgpg0" path="res://items/item_pickup/item_pickup.tscn" id="8_2bfhc"]
+[ext_resource type="Resource" uid="uid://c0msglcgrmig8" path="res://items/gem.tres" id="9_osidk"]
+[ext_resource type="Resource" uid="uid://fptdsg64nxia" path="res://items/stone.tres" id="10_rlvb3"]
+[ext_resource type="Resource" uid="uid://b4a3v5sn8ndss" path="res://items/potion.tres" id="11_k63md"]
+[ext_resource type="Resource" uid="uid://mx5k5x0gnphy" path="res://items/apple.tres" id="12_osidk"]
 
 [node name="Playground" type="Node2D"]
 y_sort_enabled = true
@@ -45,3 +50,29 @@ level = "uid://6txstkx8to3c"
 target_transition_area = "LevelTransition2"
 size = 8
 side = 2
+
+[node name="ItemPickup" parent="." instance=ExtResource("8_2bfhc")]
+position = Vector2(74, 55)
+scale = Vector2(0.5, 0.5)
+item_data = ExtResource("9_osidk")
+
+[node name="ItemPickup2" parent="." instance=ExtResource("8_2bfhc")]
+position = Vector2(196, 206)
+scale = Vector2(0.5, 0.5)
+item_data = ExtResource("10_rlvb3")
+
+[node name="ItemPickup3" parent="." instance=ExtResource("8_2bfhc")]
+position = Vector2(349, 160)
+scale = Vector2(0.5, 0.5)
+item_data = ExtResource("11_k63md")
+
+[node name="ItemPickup4" parent="." instance=ExtResource("8_2bfhc")]
+position = Vector2(237, 151)
+scale = Vector2(0.5, 0.5)
+item_data = ExtResource("12_osidk")
+
+[node name="SkeletonWarrior2" parent="." instance=ExtResource("4_q8s1k")]
+position = Vector2(301, 198)
+
+[node name="SkeletonWarrior3" parent="." instance=ExtResource("4_q8s1k")]
+position = Vector2(442, 122)

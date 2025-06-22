@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=8 format=3 uid="uid://mx5k5x0gnphy"]
+
+[ext_resource type="Script" uid="uid://c2q2gpj1w0bay" path="res://items/item_effects/item_effect.gd" id="1_dumep"]
+[ext_resource type="AudioStream" uid="uid://bf12rngjgvfpa" path="res://audio/se/items/EatItem.mp3" id="2_rj1s8"]
+[ext_resource type="Script" uid="uid://tf06d1jinke0" path="res://items/scripts/item_data.gd" id="2_xmv7l"]
+[ext_resource type="Script" uid="uid://g28p1nmmf4ji" path="res://items/item_effects/item_effect_heal.gd" id="3_ia5ia"]
+[ext_resource type="Texture2D" uid="uid://b8qx48dmfvpv4" path="res://items/sprites/32x32.png" id="5_hbuy5"]
+
+[sub_resource type="Resource" id="Resource_qgymf"]
+script = ExtResource("3_ia5ia")
+heal_amount = 1
+audio = ExtResource("2_rj1s8")
+use_description = ""
+metadata/_custom_type_script = "uid://g28p1nmmf4ji"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_26tcx"]
+atlas = ExtResource("5_hbuy5")
+region = Rect2(64, 865, 32, 32)
+
+[resource]
+script = ExtResource("2_xmv7l")
+name = "Apple"
+description = "It's not poisoned"
+texture = SubResource("AtlasTexture_26tcx")
+effects = Array[ExtResource("1_dumep")]([SubResource("Resource_qgymf")])
+metadata/_custom_type_script = "uid://tf06d1jinke0"

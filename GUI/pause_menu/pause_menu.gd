@@ -6,6 +6,8 @@ signal hidden
 @onready var button_save : Button = $Control/VBoxContainer/Button_Save
 @onready var button_load : Button = $Control/VBoxContainer/Button_Load
 @onready var item_description: Label = $Control/ItemDescription
+@onready var audio_stream: AudioStreamPlayer = $Control/AudioStreamPlayer
+@onready var main_control: Control = $Control
 
 
 var is_paused : bool = false
@@ -29,12 +31,14 @@ func show_pause_menu() -> void:
 	get_tree().paused = true
 	visible = true
 	is_paused = true
+	main_control.mouse_filter = Control.MOUSE_FILTER_STOP
 	shown.emit()
 
 func hide_pause_menu() -> void:
 	get_tree().paused = false
 	visible = false
 	is_paused = false
+	main_control.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	hidden.emit()
 
 func _on_save_pressed() -> void:
@@ -52,3 +56,7 @@ func _on_load_pressed() -> void:
 
 func update_item_description( new_text : String ) -> void:
 	item_description.text = new_text
+
+func play_audio( audio : AudioStream )-> void:
+	audio_stream.stream = audio
+	audio_stream.play()
