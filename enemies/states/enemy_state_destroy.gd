@@ -32,6 +32,7 @@ func enter() -> void:
 	enemy.UpdateAnimation( anim_name )
 	enemy.sprite.animation_finished.connect( _on_animation_finished )
 	
+	drop_items()
 	disable_hurt_box()
 
 ## What happens when the player exists the state
