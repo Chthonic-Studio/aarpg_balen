@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://dkgbp1781m8ka"]
+[gd_scene load_steps=22 format=4 uid="uid://dkgbp1781m8ka"]
 
 [ext_resource type="Script" uid="uid://c6aki8r82aeq" path="res://scenes/levels/scripts/level.gd" id="1_mm0a5"]
 [ext_resource type="PackedScene" uid="uid://c5fkb2i6imjwd" path="res://tilemaps/grass1.tscn" id="2_qchbg"]
@@ -12,6 +12,50 @@
 [ext_resource type="Resource" uid="uid://fptdsg64nxia" path="res://items/stone.tres" id="10_rlvb3"]
 [ext_resource type="Resource" uid="uid://b4a3v5sn8ndss" path="res://items/potion.tres" id="11_k63md"]
 [ext_resource type="Resource" uid="uid://mx5k5x0gnphy" path="res://items/apple.tres" id="12_osidk"]
+[ext_resource type="PackedScene" uid="uid://b8bs0rjiwhiwc" path="res://items/interactables/chest/chest.tscn" id="13_rlvb3"]
+[ext_resource type="AudioStream" uid="uid://c775qequ7grtb" path="res://audio/se/items/OpenChest1.mp3" id="14_j30dx"]
+[ext_resource type="AudioStream" uid="uid://bdpr841d6jl7h" path="res://audio/se/items/CloseChest.mp3" id="15_2ilni"]
+[ext_resource type="Script" uid="uid://cxlqjrqjaaq4p" path="res://enemies/scripts/drop_data.gd" id="16_d3jfy"]
+
+[sub_resource type="Resource" id="Resource_q6c7b"]
+script = ExtResource("16_d3jfy")
+item = ExtResource("11_k63md")
+probability = 100.0
+min_amount = 1
+max_amount = 1
+metadata/_custom_type_script = "uid://cxlqjrqjaaq4p"
+
+[sub_resource type="Resource" id="Resource_x2tju"]
+script = ExtResource("16_d3jfy")
+item = ExtResource("9_osidk")
+probability = 100.0
+min_amount = 1
+max_amount = 3
+metadata/_custom_type_script = "uid://cxlqjrqjaaq4p"
+
+[sub_resource type="Resource" id="Resource_wm6m6"]
+script = ExtResource("16_d3jfy")
+item = ExtResource("10_rlvb3")
+probability = 100.0
+min_amount = 1
+max_amount = 3
+metadata/_custom_type_script = "uid://cxlqjrqjaaq4p"
+
+[sub_resource type="Resource" id="Resource_ocmmj"]
+script = ExtResource("16_d3jfy")
+item = ExtResource("11_k63md")
+probability = 100.0
+min_amount = 1
+max_amount = 5
+metadata/_custom_type_script = "uid://cxlqjrqjaaq4p"
+
+[sub_resource type="Resource" id="Resource_vwj6b"]
+script = ExtResource("16_d3jfy")
+item = ExtResource("12_osidk")
+probability = 100.0
+min_amount = 1
+max_amount = 5
+metadata/_custom_type_script = "uid://cxlqjrqjaaq4p"
 
 [node name="Playground" type="Node2D"]
 y_sort_enabled = true
@@ -52,23 +96,19 @@ size = 8
 side = 2
 
 [node name="ItemPickup" parent="." instance=ExtResource("8_2bfhc")]
-position = Vector2(74, 55)
-scale = Vector2(0.5, 0.5)
+position = Vector2(72.2605, 47.1304)
 item_data = ExtResource("9_osidk")
 
 [node name="ItemPickup2" parent="." instance=ExtResource("8_2bfhc")]
-position = Vector2(196, 206)
-scale = Vector2(0.5, 0.5)
+position = Vector2(175.978, 204.942)
 item_data = ExtResource("10_rlvb3")
 
 [node name="ItemPickup3" parent="." instance=ExtResource("8_2bfhc")]
 position = Vector2(349, 160)
-scale = Vector2(0.5, 0.5)
 item_data = ExtResource("11_k63md")
 
 [node name="ItemPickup4" parent="." instance=ExtResource("8_2bfhc")]
 position = Vector2(237, 151)
-scale = Vector2(0.5, 0.5)
 item_data = ExtResource("12_osidk")
 
 [node name="SkeletonWarrior2" parent="." instance=ExtResource("4_q8s1k")]
@@ -76,3 +116,21 @@ position = Vector2(301, 198)
 
 [node name="SkeletonWarrior3" parent="." instance=ExtResource("4_q8s1k")]
 position = Vector2(442, 122)
+
+[node name="Chest" parent="." instance=ExtResource("13_rlvb3")]
+position = Vector2(42, 156)
+open_sound = ExtResource("14_j30dx")
+close_sound = ExtResource("15_2ilni")
+items = Array[ExtResource("16_d3jfy")]([SubResource("Resource_q6c7b")])
+
+[node name="Chest2" parent="." instance=ExtResource("13_rlvb3")]
+position = Vector2(176, 241)
+open_sound = ExtResource("14_j30dx")
+close_sound = ExtResource("15_2ilni")
+items = Array[ExtResource("16_d3jfy")]([SubResource("Resource_x2tju"), SubResource("Resource_wm6m6")])
+
+[node name="Chest3" parent="." instance=ExtResource("13_rlvb3")]
+position = Vector2(291, 28)
+open_sound = ExtResource("14_j30dx")
+close_sound = ExtResource("15_2ilni")
+items = Array[ExtResource("16_d3jfy")]([SubResource("Resource_ocmmj"), SubResource("Resource_vwj6b")])

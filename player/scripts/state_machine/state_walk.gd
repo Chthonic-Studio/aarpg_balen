@@ -41,4 +41,6 @@ func HandleInput(_event: InputEvent) -> State:
 	# Allow attacking even when walking
 	if _event.is_action_pressed("left_attack"):
 		return attack
+	if _event.is_action_pressed("interact"):
+		PlayerManager.interact_pressed.emit()
 	return null

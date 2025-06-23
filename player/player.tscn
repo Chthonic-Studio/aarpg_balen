@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://tsvjns3q3p3l"]
+[gd_scene load_steps=22 format=3 uid="uid://tsvjns3q3p3l"]
 
 [ext_resource type="Script" uid="uid://ftybwkm8xtik" path="res://player/scripts/player.gd" id="1_g2els"]
 [ext_resource type="SpriteFrames" uid="uid://c2rak7inkxr0y" path="res://resources/sprite_frames/default_player.tres" id="2_ur7pv"]
@@ -19,6 +19,9 @@ radius = 8.06226
 
 [sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_qfm1y"]
 points = PackedVector2Array(33.7567, -26.02, 28.7567, -8.02, 20.7567, -1.02, 8.75669, 5.98, -1.24331, 6.98, -17.2433, 3.98, -29.2433, -12.02, -29.2433, -32.02, -20.2433, -33.02, 16.7567, -25.02)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yllr7"]
+size = Vector2(22, 36)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f1ej7"]
 radius = 7.0
@@ -145,6 +148,16 @@ monitoring = false
 position = Vector2(1.47655, -2.79639)
 shape = SubResource("ConvexPolygonShape2D_qfm1y")
 debug_color = Color(0.854904, 0.135532, 0.275824, 0.42)
+
+[node name="Area2D" type="Area2D" parent="Interactions"]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Interactions/Area2D"]
+position = Vector2(0, 29)
+shape = SubResource("RectangleShape2D_yllr7")
+debug_color = Color(0.198364, 0.634858, 0.265936, 0.42)
 
 [node name="HitBox" parent="." instance=ExtResource("11_3v2ag")]
 collision_layer = 2
