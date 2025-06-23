@@ -1,0 +1,91 @@
+[gd_scene load_steps=19 format=3 uid="uid://dr7s3qsltu2e0"]
+
+[ext_resource type="Script" uid="uid://wr6723ltosq6" path="res://enemies/enemy.gd" id="1_tn347"]
+[ext_resource type="SpriteFrames" uid="uid://sxyc6kc4xfhd" path="res://resources/sprite_frames/skeleton_warrior.tres" id="1_uc1gw"]
+[ext_resource type="PackedScene" uid="uid://dto5k27v34kx7" path="res://general/hitbox/hit_box.tscn" id="3_qd6k2"]
+[ext_resource type="Script" uid="uid://bhv7221rf7nrx" path="res://enemies/enemy_state_machine.gd" id="4_g6rgp"]
+[ext_resource type="Script" uid="uid://badyrs7ahtvoi" path="res://enemies/states/enemy_state_idle.gd" id="5_piyya"]
+[ext_resource type="Script" uid="uid://bxl5s3mv1cuol" path="res://enemies/states/enemy_state_hit.gd" id="6_ccaxk"]
+[ext_resource type="PackedScene" uid="uid://b56a08vyxv1u8" path="res://general/hurtbox/hurt_box.tscn" id="6_lqvor"]
+[ext_resource type="Script" uid="uid://yjs86ae3xemh" path="res://enemies/states/enemy_state_wander.gd" id="6_piyya"]
+[ext_resource type="AudioStream" uid="uid://omxcjsme5y6p" path="res://audio/se/melee/SkeletonHit.mp3" id="7_3delb"]
+[ext_resource type="Script" uid="uid://d02e1m4igk0r7" path="res://enemies/states/enemy_state_destroy.gd" id="7_45h8u"]
+[ext_resource type="Script" uid="uid://cxlqjrqjaaq4p" path="res://enemies/scripts/drop_data.gd" id="9_vj20k"]
+[ext_resource type="Resource" uid="uid://c0msglcgrmig8" path="res://items/gem.tres" id="10_24vpl"]
+[ext_resource type="Resource" uid="uid://fptdsg64nxia" path="res://items/stone.tres" id="11_pcr6s"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xc01r"]
+height = 34.0
+
+[sub_resource type="Resource" id="Resource_7fsr6"]
+script = ExtResource("9_vj20k")
+item = ExtResource("10_24vpl")
+probability = 70.0
+min_amount = 1
+max_amount = 4
+metadata/_custom_type_script = "uid://cxlqjrqjaaq4p"
+
+[sub_resource type="Resource" id="Resource_tela2"]
+script = ExtResource("9_vj20k")
+item = ExtResource("11_pcr6s")
+probability = 100.0
+min_amount = 1
+max_amount = 2
+metadata/_custom_type_script = "uid://cxlqjrqjaaq4p"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lqvor"]
+radius = 17.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qylsc"]
+radius = 12.0
+height = 54.0
+
+[node name="SkeletonWarrior" type="CharacterBody2D"]
+collision_layer = 256
+collision_mask = 16
+script = ExtResource("1_tn347")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = ExtResource("1_uc1gw")
+animation = &"hit_up"
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 8)
+shape = SubResource("CapsuleShape2D_xc01r")
+
+[node name="EnemyStateMachine" type="Node" parent="."]
+script = ExtResource("4_g6rgp")
+
+[node name="Idle" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("after_idle_state")]
+script = ExtResource("5_piyya")
+after_idle_state = NodePath("../Wander")
+
+[node name="Wander" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_piyya")
+next_state = NodePath("../Idle")
+
+[node name="Hit" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("next_state")]
+script = ExtResource("6_ccaxk")
+hit_sound = ExtResource("7_3delb")
+next_state = NodePath("../Idle")
+
+[node name="Destroy" type="Node" parent="EnemyStateMachine"]
+script = ExtResource("7_45h8u")
+drops = Array[ExtResource("9_vj20k")]([SubResource("Resource_7fsr6"), SubResource("Resource_tela2")])
+
+[node name="HurtBox" parent="." instance=ExtResource("6_lqvor")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(5, 4)
+shape = SubResource("CircleShape2D_lqvor")
+debug_color = Color(1, 0.854902, 0.168627, 0.419608)
+
+[node name="HitBox" parent="." instance=ExtResource("3_qd6k2")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(5, 7)
+shape = SubResource("CapsuleShape2D_qylsc")
+debug_color = Color(0.812112, 0, 0.119733, 0.42)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

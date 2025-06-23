@@ -21,7 +21,7 @@ radius = 8.06226
 points = PackedVector2Array(33.7567, -26.02, 28.7567, -8.02, 20.7567, -1.02, 8.75669, 5.98, -1.24331, 6.98, -17.2433, 3.98, -29.2433, -12.02, -29.2433, -32.02, -20.2433, -33.02, 16.7567, -25.02)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yllr7"]
-size = Vector2(22, 36)
+size = Vector2(36, 48)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_f1ej7"]
 radius = 7.0
@@ -155,7 +155,7 @@ collision_mask = 0
 monitoring = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Interactions/Area2D"]
-position = Vector2(0, 29)
+position = Vector2(0, 23)
 shape = SubResource("RectangleShape2D_yllr7")
 debug_color = Color(0.198364, 0.634858, 0.265936, 0.42)
 

@@ -1,10 +1,10 @@
-[gd_scene load_steps=22 format=4 uid="uid://dkgbp1781m8ka"]
+[gd_scene load_steps=23 format=4 uid="uid://dkgbp1781m8ka"]
 
 [ext_resource type="Script" uid="uid://c6aki8r82aeq" path="res://scenes/levels/scripts/level.gd" id="1_mm0a5"]
 [ext_resource type="PackedScene" uid="uid://c5fkb2i6imjwd" path="res://tilemaps/grass1.tscn" id="2_qchbg"]
 [ext_resource type="PackedScene" uid="uid://chc31li38dfg7" path="res://assets/props/plants/plant.tscn" id="3_kddj0"]
 [ext_resource type="PackedScene" uid="uid://dlqvrvkemxw2r" path="res://tilemaps/grass2.tscn" id="3_o6wi6"]
-[ext_resource type="PackedScene" uid="uid://dr7s3qsltu2e0" path="res://enemies/monsters/SkeletonWarrior/SkeletonWarrior.tscn" id="4_q8s1k"]
+[ext_resource type="PackedScene" uid="uid://dr7s3qsltu2e0" path="res://enemies/enemies/SkeletonWarrior/SkeletonWarrior.tscn" id="4_q8s1k"]
 [ext_resource type="PackedScene" uid="uid://b5axvgwukxg7d" path="res://scenes/levels/player_spawn.tscn" id="5_o6wi6"]
 [ext_resource type="PackedScene" uid="uid://dwdlmcsvmqodw" path="res://scenes/levels/level_transition.tscn" id="7_emj6c"]
 [ext_resource type="PackedScene" uid="uid://xss3xwutgpg0" path="res://items/item_pickup/item_pickup.tscn" id="8_2bfhc"]
@@ -16,6 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://c775qequ7grtb" path="res://audio/se/items/OpenChest1.mp3" id="14_j30dx"]
 [ext_resource type="AudioStream" uid="uid://bdpr841d6jl7h" path="res://audio/se/items/CloseChest.mp3" id="15_2ilni"]
 [ext_resource type="Script" uid="uid://cxlqjrqjaaq4p" path="res://enemies/scripts/drop_data.gd" id="16_d3jfy"]
+[ext_resource type="PackedScene" uid="uid://dkpo5xxtapoh1" path="res://enemies/enemies/Barbarian/Barbarian.tscn" id="17_2ilni"]
 
 [sub_resource type="Resource" id="Resource_q6c7b"]
 script = ExtResource("16_d3jfy")
@@ -134,3 +135,9 @@ position = Vector2(291, 28)
 open_sound = ExtResource("14_j30dx")
 close_sound = ExtResource("15_2ilni")
 items = Array[ExtResource("16_d3jfy")]([SubResource("Resource_ocmmj"), SubResource("Resource_vwj6b")])
+
+[node name="SkeletonWarrior4" parent="." instance=ExtResource("17_2ilni")]
+position = Vector2(461, 251)
+
+[node name="SkeletonWarrior5" parent="." instance=ExtResource("17_2ilni")]
+position = Vector2(-143, -158)

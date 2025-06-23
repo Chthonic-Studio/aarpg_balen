@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bf6x26li2y2ji"]
+
+[ext_resource type="Script" uid="uid://dx3c1y21xeyo2" path="res://general/PersistentDataHandler/persistent_data_handler.gd" id="1_vwh4d"]
+
+[node name="PersistentDataHandler" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_vwh4d")

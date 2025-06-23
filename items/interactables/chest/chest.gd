@@ -7,6 +7,8 @@ class_name Chest extends Node2D
 @onready var sprite: AnimatedSprite2D = $Sprite2D
 @onready var interact_area: Area2D = $InteractArea
 @onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+@onready var PDH: PersistentDataHandler = $PersistentDataHandler
+
 
 var is_open: bool = false # Is the chest currently in the open state?
 var player_in_area: bool = false # Is the player currently in the interaction zone?
@@ -17,7 +19,12 @@ var items_given: Array[Dictionary] = [] # A temporary list of items given, for t
 func _ready() -> void:
 	interact_area.area_entered.connect(_on_body_entered)
 	interact_area.area_exited.connect(_on_body_exited)
+	
+	PDH.data_loaded.connect( set_chest_state )
+	set_chest_state()
 
+func set_chest_state() -> void:
+	has_been_opened = PDH.value
 
 func _process(_delta: float) -> void:
 	if is_open and not player_in_area:
@@ -33,6 +40,7 @@ func interact() -> void:
 		return # Do nothing if the chest is already open or player is not in range.
 
 	is_open = true
+	PDH.set_value()
 	sprite.play("open")
 
 	if open_sound:

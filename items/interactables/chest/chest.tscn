@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://b8bs0rjiwhiwc"]
+[gd_scene load_steps=17 format=3 uid="uid://b8bs0rjiwhiwc"]
 
 [ext_resource type="Texture2D" uid="uid://ceygxc3vib33b" path="res://items/interactables/chest/Wooden Chest 3 - Spritesheet.png" id="1_gc6l0"]
 [ext_resource type="Script" uid="uid://dfkyv47i3vqqd" path="res://items/interactables/chest/chest.gd" id="1_qoxpv"]
+[ext_resource type="PackedScene" uid="uid://bf6x26li2y2ji" path="res://general/PersistentDataHandler/persistent_data_handler.tscn" id="3_1fobf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qoxpv"]
 atlas = ExtResource("1_gc6l0")
@@ -128,3 +129,5 @@ offset_bottom = 1.0
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 theme_override_font_sizes/font_size = 12
+
+[node name="PersistentDataHandler" parent="." instance=ExtResource("3_1fobf")]
