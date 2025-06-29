@@ -15,7 +15,7 @@ var _direction : Vector2
 var _can_see_player : bool = false
 
 
-func _init() -> void:
+func init() -> void:
 	if vision_area:
 		vision_area.player_entered.connect( _on_player_enter )
 		vision_area.player_exited.connect( _on_player_exit )
@@ -24,6 +24,10 @@ func _init() -> void:
 ## What happens when the player enters the state
 func enter() -> void:
 	_timer = state_aggro_duration
+	
+	_direction = enemy.global_position.direction_to( PlayerManager.player.global_position )
+	enemy.SetDirection( _direction )
+
 	enemy.UpdateAnimation( anim_name )
 	if attack_area:
 		attack_area.monitoring = true
@@ -39,6 +43,9 @@ func process( _delta: float ) -> EnemyState:
 	var new_dir : Vector2 = enemy.global_position.direction_to( PlayerManager.player.global_position )
 	_direction = lerp( _direction, new_dir, turn_rate )
 	enemy.velocity = _direction * chase_speed
+	
+	if enemy.SetDirection( _direction ):
+		enemy.UpdateAnimation( anim_name )
 	
 	if _can_see_player == false:
 		_timer -= _delta

@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1gsdp4exydfy"]
+
+[ext_resource type="Texture2D" uid="uid://bati2pu6vhf35" path="res://assets/props/trees/trees-green.png" id="1_eibga"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qux26"]
+atlas = ExtResource("1_eibga")
+region = Rect2(277, 706, 265, 287)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_eibga"]
+radius = 65.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2tgf1"]
+radius = 21.0
+height = 246.0
+
+[node name="Tree" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("AtlasTexture_qux26")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-3, -32)
+shape = SubResource("CircleShape2D_eibga")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(0, 18)
+shape = SubResource("CapsuleShape2D_2tgf1")

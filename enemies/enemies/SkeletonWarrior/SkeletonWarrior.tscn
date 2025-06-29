@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dr7s3qsltu2e0"]
+[gd_scene load_steps=20 format=3 uid="uid://dr7s3qsltu2e0"]
 
 [ext_resource type="Script" uid="uid://wr6723ltosq6" path="res://enemies/enemy.gd" id="1_tn347"]
 [ext_resource type="SpriteFrames" uid="uid://sxyc6kc4xfhd" path="res://resources/sprite_frames/skeleton_warrior.tres" id="1_uc1gw"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" uid="uid://cxlqjrqjaaq4p" path="res://enemies/scripts/drop_data.gd" id="9_vj20k"]
 [ext_resource type="Resource" uid="uid://c0msglcgrmig8" path="res://items/gem.tres" id="10_24vpl"]
 [ext_resource type="Resource" uid="uid://fptdsg64nxia" path="res://items/stone.tres" id="11_pcr6s"]
+[ext_resource type="PackedScene" uid="uid://bf6x26li2y2ji" path="res://general/PersistentDataHandler/persistent_data_handler.tscn" id="14_ynxe3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xc01r"]
 height = 34.0
@@ -89,3 +90,5 @@ shape = SubResource("CapsuleShape2D_qylsc")
 debug_color = Color(0.812112, 0, 0.119733, 0.42)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
+[node name="PersistentDataHandler" parent="." instance=ExtResource("14_ynxe3")]

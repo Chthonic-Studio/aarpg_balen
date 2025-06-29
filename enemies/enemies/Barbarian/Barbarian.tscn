@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://dkpo5xxtapoh1"]
+[gd_scene load_steps=23 format=3 uid="uid://dkpo5xxtapoh1"]
 
 [ext_resource type="Script" uid="uid://wr6723ltosq6" path="res://enemies/enemy.gd" id="1_rtuqm"]
 [ext_resource type="SpriteFrames" uid="uid://sxyc6kc4xfhd" path="res://resources/sprite_frames/skeleton_warrior.tres" id="2_y603a"]
@@ -15,9 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dto5k27v34kx7" path="res://general/hitbox/hit_box.tscn" id="13_7agh3"]
 [ext_resource type="Script" uid="uid://doslir31s8a6g" path="res://enemies/states/enemy_state_chase.gd" id="13_ygl38"]
 [ext_resource type="PackedScene" uid="uid://i1npwovnpbfj" path="res://enemies/vision_area.tscn" id="14_12mr3"]
-
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_ygl38"]
-points = PackedVector2Array(-54, 17, -35, 31, -8, 38, 20, 39, 45, 20, 40, -6, -4, 11, -56, -12)
+[ext_resource type="PackedScene" uid="uid://bf6x26li2y2ji" path="res://general/PersistentDataHandler/persistent_data_handler.tscn" id="16_o6xje"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_xc01r"]
 height = 34.0
@@ -45,6 +43,9 @@ radius = 12.0416
 radius = 12.0
 height = 54.0
 
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_ygl38"]
+points = PackedVector2Array(-54, 17, -35, 31, -8, 38, 20, 39, 45, 20, 40, -6, -4, 11, -56, -12)
+
 [node name="Barbarian" type="CharacterBody2D"]
 collision_layer = 256
 collision_mask = 16
@@ -52,16 +53,7 @@ script = ExtResource("1_rtuqm")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("2_y603a")
-animation = &"attack_up"
-frame = 14
-frame_progress = 1.0
-
-[node name="HurtBox" parent="AnimatedSprite2D" instance=ExtResource("12_sqtud")]
-monitoring = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AnimatedSprite2D/HurtBox"]
-position = Vector2(4, 1)
-shape = SubResource("ConvexPolygonShape2D_ygl38")
+animation = &"attack_down"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2, 8)
@@ -90,7 +82,7 @@ drops = Array[ExtResource("9_iiry2")]([SubResource("Resource_7fsr6"), SubResourc
 [node name="Chase" type="Node" parent="EnemyStateMachine" node_paths=PackedStringArray("vision_area", "attack_area", "next_state")]
 script = ExtResource("13_ygl38")
 vision_area = NodePath("../../VisionArea")
-attack_area = NodePath("../../AnimatedSprite2D/HurtBox")
+attack_area = NodePath("../../AttackBox")
 next_state = NodePath("../Idle")
 
 [node name="HurtBox" parent="." instance=ExtResource("12_sqtud")]
@@ -112,4 +104,14 @@ debug_color = Color(0.812112, 0, 0.119733, 0.42)
 [node name="VisionArea" parent="." instance=ExtResource("14_12mr3")]
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="VisionArea"]
+modulate = Color(1, 1, 1, 0.215686)
 polygon = PackedVector2Array(-70, 0, 70, 0, 200, 200, -200, 200)
+
+[node name="PersistentDataHandler" parent="." instance=ExtResource("16_o6xje")]
+
+[node name="AttackBox" parent="." instance=ExtResource("12_sqtud")]
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackBox"]
+position = Vector2(4, 1)
+shape = SubResource("ConvexPolygonShape2D_ygl38")

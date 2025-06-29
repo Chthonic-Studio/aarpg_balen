@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b5axvgwukxg7d"]
 
 [ext_resource type="SpriteFrames" uid="uid://c2rak7inkxr0y" path="res://resources/sprite_frames/default_player.tres" id="1_7xjx2"]
-[ext_resource type="Script" uid="uid://cox1cb4luvv55" path="res://scenes/levels/scripts/player_spawn.gd" id="1_byhuj"]
+[ext_resource type="Script" uid="uid://cox1cb4luvv55" path="res://scenes/levels/Isvagar/Sewers/scripts/player_spawn.gd" id="1_byhuj"]
 
 [node name="PlayerSpawn" type="Node2D"]
 script = ExtResource("1_byhuj")

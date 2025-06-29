@@ -117,7 +117,7 @@ script = ExtResource("9_ur7pv")
 
 [node name="Walk" type="Node" parent="StateMachine"]
 script = ExtResource("10_y4r1p")
-move_speed = 120.0
+move_speed = 140.0
 
 [node name="Attack" type="Node" parent="StateMachine"]
 script = ExtResource("14_f1ej7")
@@ -125,6 +125,7 @@ attack_sound = ExtResource("15_oprun")
 
 [node name="Hit" type="Node" parent="StateMachine"]
 script = ExtResource("8_jej6c")
+invulnerable_duration = 1.5
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("8_y4r1p")

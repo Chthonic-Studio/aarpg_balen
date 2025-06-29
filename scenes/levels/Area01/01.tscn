@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=4 uid="uid://6txstkx8to3c"]
 
-[ext_resource type="Script" uid="uid://c6aki8r82aeq" path="res://scenes/levels/scripts/level.gd" id="1_3f1tx"]
+[ext_resource type="Script" uid="uid://c6aki8r82aeq" path="res://scenes/levels/Isvagar/Sewers/scripts/level.gd" id="1_3f1tx"]
 [ext_resource type="PackedScene" uid="uid://c5fkb2i6imjwd" path="res://tilemaps/grass1.tscn" id="1_3vcjy"]
 [ext_resource type="PackedScene" uid="uid://dlqvrvkemxw2r" path="res://tilemaps/grass2.tscn" id="2_t32jy"]
 [ext_resource type="PackedScene" uid="uid://b5axvgwukxg7d" path="res://scenes/levels/player_spawn.tscn" id="3_ee7k1"]

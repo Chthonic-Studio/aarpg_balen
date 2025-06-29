@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://doqgalb8hntfq"]
+
+[ext_resource type="Script" uid="uid://c6aki8r82aeq" path="res://scenes/levels/Isvagar/Sewers/scripts/level.gd" id="1_ytwu5"]
+
+[node name="SewersMain" type="Node2D"]
+script = ExtResource("1_ytwu5")

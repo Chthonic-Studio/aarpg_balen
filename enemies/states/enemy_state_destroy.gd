@@ -53,6 +53,8 @@ func _on_enemy_destroyed( hurt_box : HurtBox ) -> void:
 	state_machine.ChangeState( self )
 
 func _on_animation_finished( ) -> void:
+	enemy.destroyed = true
+	enemy.PDH.set_value()
 	enemy.queue_free()
 
 func disable_hurt_box() -> void:

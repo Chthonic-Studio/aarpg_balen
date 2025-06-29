@@ -15,14 +15,22 @@ var invulnerable : bool = false
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
 @onready var hit_box : HitBox = $HitBox
 @onready var state_machine : EnemyStateMachine = $EnemyStateMachine
-
+@onready var PDH: PersistentDataHandler = $PersistentDataHandler
+var destroyed : bool = false
 
 func _ready() -> void:
+	
 	state_machine.Initialize( self )
 	player = PlayerManager.player
 	hit_box.Damaged.connect( _take_damage )
-	pass
+	PDH.data_loaded.connect( _set_state )
+	_set_state()
+	if destroyed:
+		queue_free()
 
+func _set_state() -> void:
+	destroyed = PDH.value
+	
 func _process(_delta: float) -> void:
 	pass
 	

@@ -43,29 +43,16 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0.5, 0.44, 0.44, 0.698039)
 
-[node name="DescriptionBG" type="NinePatchRect" parent="Control"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -1.89531
-anchor_top = -0.312636
-anchor_right = -1.18906
-anchor_bottom = -0.145969
-offset_left = 1067.75
-offset_top = 253.412
-offset_right = 1028.75
-offset_bottom = 253.412
-texture = ExtResource("2_8rjl7")
-metadata/_edit_use_anchors_ = true
-
 [node name="VBoxContainer" type="VBoxContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.00208333
-anchor_top = 0.766667
+anchor_left = 0.0015625
+anchor_top = 0.822222
 anchor_right = 0.2
-anchor_bottom = 0.996296
+anchor_bottom = 0.997222
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Button_Save" type="Button" parent="Control/VBoxContainer"]
 layout_mode = 2
@@ -82,22 +69,25 @@ text = "Load"
 [node name="Label" type="Label" parent="Control"]
 layout_mode = 1
 anchors_preset = -1
-anchor_left = 0.410417
-anchor_right = 0.591667
-anchor_bottom = 0.107407
+anchor_left = 0.373437
+anchor_right = 0.626562
+anchor_bottom = 0.0861111
 grow_horizontal = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 30
 text = "Game Paused"
 vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="PanelContainer" type="PanelContainer" parent="Control"]
 layout_mode = 0
-offset_left = 144.0
-offset_top = 34.0
-offset_right = 464.0
-offset_bottom = 168.0
+anchor_left = 0.353125
+anchor_top = 0.125
+anchor_right = 0.965625
+anchor_bottom = 0.516667
 theme_override_styles/panel = SubResource("StyleBoxTexture_36pfd")
+metadata/_edit_use_anchors_ = true
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/PanelContainer"]
 custom_minimum_size = Vector2(300, 120)
@@ -105,7 +95,7 @@ layout_mode = 2
 
 [node name="GridContainer" type="GridContainer" parent="Control/PanelContainer/ScrollContainer"]
 layout_mode = 2
-columns = 8
+columns = 10
 script = ExtResource("4_sn1ji")
 data = ExtResource("5_8rjl7")
 
@@ -181,19 +171,55 @@ layout_mode = 2
 [node name="InventorySlot24" parent="Control/PanelContainer/ScrollContainer/GridContainer" instance=ExtResource("4_36pfd")]
 layout_mode = 2
 
+[node name="InventorySlot25" parent="Control/PanelContainer/ScrollContainer/GridContainer" instance=ExtResource("4_36pfd")]
+layout_mode = 2
+
+[node name="InventorySlot26" parent="Control/PanelContainer/ScrollContainer/GridContainer" instance=ExtResource("4_36pfd")]
+layout_mode = 2
+
+[node name="InventorySlot27" parent="Control/PanelContainer/ScrollContainer/GridContainer" instance=ExtResource("4_36pfd")]
+layout_mode = 2
+
+[node name="InventorySlot28" parent="Control/PanelContainer/ScrollContainer/GridContainer" instance=ExtResource("4_36pfd")]
+layout_mode = 2
+
+[node name="InventorySlot29" parent="Control/PanelContainer/ScrollContainer/GridContainer" instance=ExtResource("4_36pfd")]
+layout_mode = 2
+
+[node name="InventorySlot30" parent="Control/PanelContainer/ScrollContainer/GridContainer" instance=ExtResource("4_36pfd")]
+layout_mode = 2
+
+[node name="InventorySlot31" parent="Control/PanelContainer/ScrollContainer/GridContainer" instance=ExtResource("4_36pfd")]
+layout_mode = 2
+
 [node name="ItemDescription" type="Label" parent="Control"]
-layout_mode = 0
-anchor_left = 0.36875
-anchor_top = 0.677778
-anchor_right = 0.925
-anchor_bottom = 0.744444
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.373437
+anchor_top = 0.552778
+anchor_right = 0.929688
+anchor_bottom = 0.636111
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_constants/line_spacing = -5
 theme_override_constants/paragraph_spacing = -5
 theme_override_fonts/font = ExtResource("8_dvxeg")
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 12
 horizontal_alignment = 1
 autowrap_mode = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="DescriptionBG" type="NinePatchRect" parent="Control/ItemDescription"]
+show_behind_parent = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.0589888
+anchor_top = -0.666666
+anchor_right = 1.05337
+anchor_bottom = 1.73333
+offset_right = -3.05176e-05
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_8rjl7")
 metadata/_edit_use_anchors_ = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control"]

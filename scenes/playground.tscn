@@ -1,6 +1,6 @@
 [gd_scene load_steps=23 format=4 uid="uid://dkgbp1781m8ka"]
 
-[ext_resource type="Script" uid="uid://c6aki8r82aeq" path="res://scenes/levels/scripts/level.gd" id="1_mm0a5"]
+[ext_resource type="Script" uid="uid://c6aki8r82aeq" path="res://scenes/levels/Isvagar/Sewers/scripts/level.gd" id="1_mm0a5"]
 [ext_resource type="PackedScene" uid="uid://c5fkb2i6imjwd" path="res://tilemaps/grass1.tscn" id="2_qchbg"]
 [ext_resource type="PackedScene" uid="uid://chc31li38dfg7" path="res://assets/props/plants/plant.tscn" id="3_kddj0"]
 [ext_resource type="PackedScene" uid="uid://dlqvrvkemxw2r" path="res://tilemaps/grass2.tscn" id="3_o6wi6"]
@@ -136,8 +136,8 @@ open_sound = ExtResource("14_j30dx")
 close_sound = ExtResource("15_2ilni")
 items = Array[ExtResource("16_d3jfy")]([SubResource("Resource_ocmmj"), SubResource("Resource_vwj6b")])
 
-[node name="SkeletonWarrior4" parent="." instance=ExtResource("17_2ilni")]
+[node name="Barbarian" parent="." instance=ExtResource("17_2ilni")]
 position = Vector2(461, 251)
 
-[node name="SkeletonWarrior5" parent="." instance=ExtResource("17_2ilni")]
+[node name="Barbarian2" parent="." instance=ExtResource("17_2ilni")]
 position = Vector2(-143, -158)

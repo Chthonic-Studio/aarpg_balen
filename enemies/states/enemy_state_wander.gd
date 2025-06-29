@@ -14,7 +14,7 @@ var _direction : Vector2
 
 
 
-func _init() -> void:
+func init() -> void:
 	pass
 
 ## What happens when the player enters the state
